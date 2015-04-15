@@ -1,0 +1,22 @@
+{
+  "name": "Working_CMS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Shikhanjali/Working_CMS",
+  "authors": [
+    "Naik",
+    "Shikhanjali <Shikhanjali_Naik@intuit.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "www/libs"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.4"
+  }
+}

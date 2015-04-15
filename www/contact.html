@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CMS</title>
+  <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="libs/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+  <h1>CMS Contact Form</h1>
+
+  <form>
+    <div class="form-group">
+      <label for="inputName1">First Name</label>
+      <input type="text" class="form-control" id="inputName1" placeholder="Enter your First Name">
+    </div>
+    <div class="form-group">
+      <label for="inputName2">Last Name</label>
+      <input type="text" class="form-control" id="inputName2" placeholder="Enter your Last Name">
+    </div>
+    <div class="form-group">
+      <label for="inputEmail1">Email address</label>
+      <input type="email" placeholder="Enter email" id="inputEmail1" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="inputPhone">Phone</label>
+      <input type="text" placeholder="(###)-###-####" id="inputPhone" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="inputTextArea">Comments</label>
+      <textarea class="form-control" id="inputTextArea" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="inputReason">Specify Reason</label>
+      <select class="form-control" id="inputReason">
+        <option>Reason 1</option>
+        <option>Reason 2</option>
+        <option>Reason 3</option>
+        <option>Reason 4</option>
+        <option>Reason 5</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="inputReason">Specify Contact options</label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Phone
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Email
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Pigeon
+      </label>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+
+</div>
+
+
+<script src="libs/jquery/dist/jquery.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/appjs.js"></script>
+</body>
+
+</html>

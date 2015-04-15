@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Working CMS</title>
+    <title>CMS</title>
+    <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> 
+    <style>
+    .body {
+      margin-top: 50px;
+    }
+
+    ul {
+      list-style: none;
+      padding:0;
+    }
+
+    .footer {
+      bottom: 0;
+      height: 60px;
+      position: absolute;
+      width: 100%;
+    }
+    </style>
   </head>
   
   <body>
-     <h1>CMS template</h1>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">CMS</a>
+        </div>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+      </div>
+    </nav>
+
+    <div class="container body">
+      <div class="row">
+        <div class="col-md-3">
+          <h1>Menu</h1>
+          <ul class="">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donations.html">Donations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-9 content">
+          <h2>Content Heading</h2>
+          <p>Content Content goes here ...</p>
+       </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Company 2015</p>
+      </footer>
+    </div>
+    
+
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/appjs.js"></script>
   </body>
 
 </html>

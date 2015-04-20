@@ -1,27 +1,38 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    webServer: {
-      rootFolder: "www",
-      port: 8080
+    httpServer: {
+      wwwRoot: "app/www",
+      port: 8080,
+      callback: function() {
+  			grunt.log.writeln("Web server listening on port " + this.port);
+  		}
+    },
+    mongoServer: {
+      host: "localhost",
+      port: 27017,
+      dbName: "CMSDB"
     }
   });
 
-  grunt.registerTask("default", "Start web server", function() {
+	grunt.registerTask("webServer", "Start web server", function() {
 
-    var
-      http = require("http"),
-      express = require("express"),
-      app = express(),
-      webServerConfig = grunt.config("webServer");
+		var
+			httpServer = require("./app/http-server"),
+      app = require("./app/app"),
+      config = {
+        webSockets: require("./app/web-sockets"),
+        httpServer: grunt.config("httpServer"),
+        mongoServer: grunt.config("mongoServer")
+      };
+
+    console.log(config);
 
     this.async();
+    config.app = app(config);
+    httpServer(config);
+	});
 
-    app.use(express.static(webServerConfig.rootFolder));
+	grunt.registerTask("default", ["webServer"]);
 
-    http.createServer(app).listen(webServerConfig.port, function() {
-      grunt.log.writeln("Web server listening on port " + webServerConfig.port);
-    });
-
-  });
 };

@@ -1,10 +1,9 @@
 {
-  "name": "Working_CMS",
+  "name": "intuit",
   "version": "0.0.0",
-  "homepage": "https://github.com/Shikhanjali/Working_CMS",
+  "homepage": "https://github.com/ericwgreene/intuit-bootcamp",
   "authors": [
-    "Naik",
-    "Shikhanjali <Shikhanjali_Naik@intuit.com>"
+    "Eric W. Greene <eric@training4developers.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -12,11 +11,13 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests",
-    "www/libs"
+    "tests"
   ],
   "dependencies": {
     "jquery": "~2.1.3",
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "underscore": "~1.8.3",
+    "q": "1.0.1",
+    "bluebird": "~2.9.24"
   }
 }

@@ -27,10 +27,6 @@ module.exports = function(config) {
 	donationsRouter.route("/donations")
 		.get(function(req, res) {
 
-			/*res.json([
-				{ id: 1, userName: "TEST", amount: "59.00" }
-			]);*/
-
 			DonationModel.find({}, function(err, donations) {
 				if (err) {
 					console.log(err);

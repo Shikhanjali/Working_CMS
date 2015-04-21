@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			}
 		};
 
-		xhr.open("POST", "/api/gallery");
+		xhr.open("POST", "/uploads");
 		xhr.send(fd);
 
 	});

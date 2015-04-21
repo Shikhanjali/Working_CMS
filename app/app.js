@@ -3,17 +3,28 @@ module.exports = function(config) {
 	var
 		express = require("express"),
 		bodyParser = require("body-parser"),
-		mongoose = require("mongoose"),
 		multer = require("multer"),
-		fs = require("fs"),
+		session = require('express-session'),
+		passport = require("passport"),
+		crypto = require("crypto"),
 		app = express();
 
-	mongoose.connect("mongodb://" +
-		config.mongoServer.host + ":" +
-		config.mongoServer.port + "/" +
-		config.mongoServer.dbName);
+	passport.serializeUser(function(user, done) {
+  	done(null, user);
+	});
 
-	console.log(config.httpServer.wwwRoot);
+	passport.deserializeUser(function(user, done) {
+  	done(null, user);
+	});
+
+	app.use(session({
+		resave: false,
+		saveUninitialized: false,
+		secret : "asecret"
+	}));
+
+	app.use(passport.initialize());
+	app.use(passport.session());
 
 	app.use(express.static(config.httpServer.wwwRoot));
 
@@ -24,50 +35,37 @@ module.exports = function(config) {
 			return fileName;
 		}
 	}));
+	app.use("/api", require("./routers/transactions.js")(config));
 
-	var fileSchema = mongoose.Schema({
-    fileName: String,
-    data: Buffer
-  });
+	app.post("/api/accounts/authenticate", function(req, res, next) {
 
-  var FileModel = mongoose.model("file", fileSchema);
+		var passwordSalt = "salt is good for you";
 
-  app.use(multer({
-		dest: "./app/uploads",
-		rename: function(fieldName, fileName) {
-			return fileName;
-		},
-    /*onFileUploadComplete: function(file, req, res) {
-      console.log(file.originalname + ' uploaded to ' + file.path);
-      var media = new FileModel();
-      fs.readFile(file.path, function(err, data){
-        media.data = data;
-        media.save(function (err, media) {
-          if (err) throw err;
+		var user = {
+			id: 1,
+			name: "Test User",
+			username: req.body.username
+		};
 
-          console.error('saved img to mongo');
-        });
-      });
-      return;
-    }*/
+		function sha1(value) {
+			return crypto.createHash("sha1").update(value.toString()).digest("hex");
+		}
 
-	}));
+		console.log(sha1(req.body.password + passwordSalt));
 
-	app.post("/uploads", function(req, res) {
 
-    console.dir(req);
+		req.login(user, function(err) {
 
-		res.json({
-			msg: "received"
+			if (err) {
+				console.dir(err);
+				res.status(500).json(err);
+				return;
+			}
+
+			res.json(user);
 		});
 
 	});
 
-	app.use("/api", require("./routers/donations.js")(config));
-	app.use("/api", require("./routers/contacts.js")(config));
-	app.use("/api", require("./routers/contents.js")(config));
-	app.use("/api", require("./routers/gallery.js")(config));
-
 	return app;
-
 };

@@ -1,15 +1,3 @@
-  .body {
-      margin-top: 50px;
-    }
-
-    ul {
-      list-style: none;
-      padding:0;
-    }
-
-    .footer {
-      bottom: 0;
-      height: 60px;
-      position: absolute;
-      width: 100%;
-    }
+.body {
+	margin-top: 50px;
+}

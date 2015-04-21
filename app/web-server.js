@@ -16,11 +16,9 @@ module.exports = function(webServerConfig, webServerCallback) {
 	}));
 
 	app.post("/uploads", function(req, res) {
-
 		res.json({
 			msg: "received"
 		});
-
 	});
 
 	webSockets(http.createServer(app))

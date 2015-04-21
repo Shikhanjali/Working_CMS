@@ -1,26 +1,25 @@
 module.exports = function(config) {
-  var
-    grunt = require("http"),
-    loggerConfig = grunt.config("logger"),
-    winston = require("winston"),
-    logger = new winston.logger();
 
-  if (loggerConfig.transports.console){
-    logger.add(winston.transports.Console, {
-      level: loggerConfig.transports.console.level || "error",
-      colorize: loggerConfig.transports.console.colorize || "true",
-      timestamp: loggerConfig.transports.console.timestamp || true
-    });
-  }
+	var
+		winston = require("winston")
+		logger =  new winston.Logger();
 
-  if (loggerConfig.transports.file) {
-    logger.add(winston.transports.File, {
-      level: loggerConfig.transports.console.level || "error",
-      colorize: loggerConfig.transports.console.colorize || "logs/app.log",
-      timestamp: loggerConfig.transports.console.timestamp || true
-    });
-  }
+	if (config.transports.console) {
+		logger.add(winston.transports.Console, {
+			level: config.transports.console.level || "error",
+			colorize: config.transports.console.colorize || true,
+			timestamp: config.transports.console.timestamp || true
+		});
+	}
 
-  return loggerConfig;
+	if (config.transports.file) {
+		logger.add(winston.transports.File, {
+			level: config.transports.file.level || "error",
+			filename: config.transports.file.fileName || "logs/app.log",
+			timestamp: config.transports.file.timestamp || true
+		});
+	}
+
+	return logger;
 
 };

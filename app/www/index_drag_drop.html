@@ -9,17 +9,19 @@
 		<link href='css/site.css' rel="stylesheet">
 		<style>
 
-			.landing-zone {
-				border: 2px gray dashed;
-				width:200px;
-				height:200px;
-				position:relative;
-				top:30px;
-				left:30px;
+			#red-box {
+				background-color:red;
+				width:100px;
+				height:100px;
+				float:left;
 			}
 
-			.landing-zone-active {
-				border: 2px red dashed;
+			#blue-box {
+				background-color:blue;
+				width:300px;
+				height:300px;
+				padding:5px;
+				float:right
 			}
 
 		</style>
@@ -27,7 +29,8 @@
 
 	<body>
 
-		<div id="drop-area" class="landing-zone"></div>
+		<div id="red-box" draggable="true"></div>
+		<div id="blue-box"></div>
 
 		<script src="libs/jquery/dist/jquery.js"></script>
 		<script src="libs/bootstrap/dist/js/bootstrap.js"></script>

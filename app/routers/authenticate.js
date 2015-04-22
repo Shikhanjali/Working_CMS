@@ -8,11 +8,6 @@ module.exports = function(config) {
 		crypto = require("crypto"),
 		accountsRouter = express.Router();
 
-	mongoose.connect("mongodb://" +
-		config.mongoServer.host + ":" +
-		config.mongoServer.port + "/" +
-		config.mongoServer.dbName);
-
 	var accountsSchema = mongoose.Schema({
 		userName: String,
 		password: String
@@ -45,9 +40,9 @@ module.exports = function(config) {
 					return;
 				}
 				res.json(accounts);
-			});			
+			});
 		});
-		
+
 		console.log(sha1(req.body.password + passwordSalt));
 
 	});

@@ -5,11 +5,6 @@ module.exports = function(config) {
 		mongoose = require("mongoose"),
 		donationsRouter = express.Router();
 
-	/*mongoose.connect("mongodb://" +
-		config.mongoServer.host + ":" +
-		config.mongoServer.port + "/" +
-		config.mongoServer.dbName);*/
-
 	var donationSchema = mongoose.Schema({
 		userName: String,
 		userAddress: String,

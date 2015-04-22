@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     httpServer: {
       wwwRoot: "app/www",
-      port: 8080,
+      port: 8088,
       callback: function() {
   			grunt.log.writeln("Web server listening on port " + this.port);
   		}
@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     mongoServer: {
       host: "localhost",
       port: 27017,
-      dbName: "Intuit"
+      dbName: "CMSDB"
     },
     logger: {
       transports: {

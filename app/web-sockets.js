@@ -1,5 +1,6 @@
 module.exports = function(webServer, logger) {
   "use strict";
+  console.log("in web socket");
 
   var
     WebSocketServer = require('ws').Server,
